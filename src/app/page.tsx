@@ -141,6 +141,28 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section className="py-16 sm:py-20 bg-gray-50">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <h2 className="section-heading">Company Media</h2>
+            <p className="section-subheading">
+              Moments from the road and behind the scenes with A Reliable Trucking Company.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <video controls muted playsInline preload="metadata" className="w-full rounded-xl shadow-sm">
+              <source src="/assets/media-originals/1030658424_1782848330626927.mp4" type="video/mp4" />
+            </video>
+            <video controls muted playsInline preload="metadata" className="w-full rounded-xl shadow-sm">
+              <source src="/assets/media-originals/116599418_1782848490588070.mp4" type="video/mp4" />
+            </video>
+            <video controls muted playsInline preload="metadata" className="w-full rounded-xl shadow-sm">
+              <source src="/assets/media-originals/127677300_1782848524108806.mp4" type="video/mp4" />
+            </video>
+          </div>
+        </div>
+      </section>
+
       <section className="py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">

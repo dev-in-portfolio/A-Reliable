@@ -109,6 +109,26 @@ export default function FleetPage() {
         </div>
       </section>
 
+      <section className="py-16 sm:py-20 bg-gray-50">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+          <h2 className="section-heading text-center">Company Media</h2>
+          <p className="section-subheading text-center">
+            Moments from the road and around the operation.
+          </p>
+          <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <video controls muted playsInline preload="metadata" className="w-full rounded-xl shadow-sm">
+              <source src="/assets/media-originals/1030658424_1782848330626927.mp4" type="video/mp4" />
+            </video>
+            <video controls muted playsInline preload="metadata" className="w-full rounded-xl shadow-sm">
+              <source src="/assets/media-originals/116599418_1782848490588070.mp4" type="video/mp4" />
+            </video>
+            <video controls muted playsInline preload="metadata" className="w-full rounded-xl shadow-sm">
+              <source src="/assets/media-originals/127677300_1782848524108806.mp4" type="video/mp4" />
+            </video>
+          </div>
+        </div>
+      </section>
+
       <section className="py-16 sm:py-20">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
           <h2 className="section-heading text-center">
