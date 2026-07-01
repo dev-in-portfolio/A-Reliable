@@ -6,18 +6,8 @@ import CTASection from "@/components/CTASection"
 export default function HomePage() {
   return (
     <>
-      <section className="relative bg-navy-900 overflow-hidden">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          poster="/assets/logo/a-reliable-trucking-logo.png"
-          className="absolute inset-0 w-full h-full object-cover opacity-20"
-        >
-          <source src="/assets/media-originals/1030658424_1782848330626927.mp4" type="video/mp4" />
-        </video>
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 sm:py-32 lg:py-40">
+      <section className="relative bg-navy-900">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 sm:py-32 lg:py-40">
           <div className="mx-auto max-w-3xl text-center">
             <Image
               src="/assets/logo/a-reliable-trucking-logo.png"
@@ -147,51 +137,6 @@ export default function HomePage() {
             <Link href="/services" className="btn-secondary">
               View All Services
             </Link>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 sm:py-20 bg-navy-900">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-10">
-            <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">
-              See Our Fleet on the Road
-            </h2>
-            <p className="mt-4 text-gray-400">
-              Real footage of A Reliable Trucking Company equipment at work.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <video
-              controls
-              muted
-              playsInline
-              preload="metadata"
-              className="w-full rounded-xl shadow-sm"
-              poster="/assets/logo/a-reliable-trucking-logo.png"
-            >
-              <source src="/assets/media-originals/1030658424_1782848330626927.mp4" type="video/mp4" />
-            </video>
-            <video
-              controls
-              muted
-              playsInline
-              preload="metadata"
-              className="w-full rounded-xl shadow-sm"
-              poster="/assets/logo/a-reliable-trucking-logo.png"
-            >
-              <source src="/assets/media-originals/116599418_1782848490588070.mp4" type="video/mp4" />
-            </video>
-            <video
-              controls
-              muted
-              playsInline
-              preload="metadata"
-              className="w-full rounded-xl shadow-sm"
-              poster="/assets/logo/a-reliable-trucking-logo.png"
-            >
-              <source src="/assets/media-originals/127677300_1782848524108806.mp4" type="video/mp4" />
-            </video>
           </div>
         </div>
       </section>
