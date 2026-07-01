@@ -146,6 +146,65 @@ export default function ContactForm() {
         />
       </div>
 
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+        <div>
+          <label htmlFor="weight" className="block text-sm font-medium text-gray-700">
+            Estimated Weight
+          </label>
+          <input
+            type="text"
+            name="estimated_weight"
+            id="weight"
+            className="mt-1 block w-full rounded-md border border-gray-300 px-4 py-3 text-gray-900 shadow-sm focus:border-brand-500 focus:ring-brand-500"
+            placeholder="e.g., 2,000 lbs"
+          />
+        </div>
+        <div>
+          <label htmlFor="liftgate" className="block text-sm font-medium text-gray-700">
+            Liftgate Needed?
+          </label>
+          <select
+            name="liftgate_needed"
+            id="liftgate"
+            className="mt-1 block w-full rounded-md border border-gray-300 px-4 py-3 text-gray-900 shadow-sm focus:border-brand-500 focus:ring-brand-500"
+          >
+            <option value="">Select...</option>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+            <option value="unsure">Unsure</option>
+          </select>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+        <div>
+          <label htmlFor="company" className="block text-sm font-medium text-gray-700">
+            Company Name
+          </label>
+          <input
+            type="text"
+            name="company_name"
+            id="company"
+            className="mt-1 block w-full rounded-md border border-gray-300 px-4 py-3 text-gray-900 shadow-sm focus:border-brand-500 focus:ring-brand-500"
+            placeholder="Your company (optional)"
+          />
+        </div>
+        <div>
+          <label htmlFor="contact-method" className="block text-sm font-medium text-gray-700">
+            Preferred Contact Method
+          </label>
+          <select
+            name="preferred_contact_method"
+            id="contact-method"
+            className="mt-1 block w-full rounded-md border border-gray-300 px-4 py-3 text-gray-900 shadow-sm focus:border-brand-500 focus:ring-brand-500"
+          >
+            <option value="phone">Phone Call</option>
+            <option value="text">Text Message</option>
+            <option value="email">Email</option>
+          </select>
+        </div>
+      </div>
+
       <div>
         <label htmlFor="details" className="block text-sm font-medium text-gray-700">
           Additional Details
