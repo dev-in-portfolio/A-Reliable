@@ -7,7 +7,17 @@ export default function HomePage() {
   return (
     <>
       <section className="relative bg-gradient-to-br from-navy-950 via-navy-900 to-navy-800 overflow-hidden">
-        <div className="absolute inset-0 bg-grid-pattern opacity-50" />
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover opacity-15"
+        >
+          <source src="/assets/media-originals/1030658424_1782848330626927.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-gradient-to-br from-navy-950/90 via-navy-900/85 to-navy-800/90" />
+        <div className="absolute inset-0 bg-grid-pattern opacity-40" />
         <div className="absolute top-1/4 -right-32 h-96 w-96 rounded-full bg-brand-600/10 blur-3xl" />
         <div className="absolute -bottom-32 -left-32 h-96 w-96 rounded-full bg-brand-500/5 blur-3xl" />
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-28 sm:py-36 lg:py-44">
