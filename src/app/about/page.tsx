@@ -14,19 +14,22 @@ export default function AboutPage() {
       <PageHero
         title="A Family-Owned Company Built from the Ground Up"
         description="A Reliable Trucking Company is a family-owned freight transportation company based in Charlotte, North Carolina and serving customers nationwide. Established in 2022, the company was built with a clear purpose: to create something independent, dependable, and meaningful for the family behind it."
+        canvasType="solarstorm"
       />
 
-      <section className="py-16 sm:py-20">
-        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <p className="text-sm font-semibold uppercase tracking-widest text-brand-600">
+      {/* Story Section */}
+      <section className="py-20 sm:py-28 relative overflow-hidden bg-navy-950">
+        <div className="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none" />
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center mb-12">
+            <span className="text-xs font-bold uppercase tracking-widest text-brand-400 px-3 py-1 rounded-full bg-brand-500/5 border border-brand-500/10">
               Our Story
-            </p>
-            <h2 className="mt-2 section-heading">
+            </span>
+            <h2 className="mt-4 section-heading">
               Driven by Family, Built on Reliability
             </h2>
           </div>
-          <div className="mt-10 space-y-6 text-gray-600 leading-8">
+          <div className="space-y-6 text-base sm:text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto">
             <p>
               A Reliable Trucking Company was built on more than transportation. It was built on
               family, purpose, independence, and the belief that reliability still matters.
@@ -37,7 +40,7 @@ export default function AboutPage() {
               rig and three 26-foot box trucks equipped with liftgates, allowing us to support a
               range of freight transportation, pickup, and delivery needs.
             </p>
-            <p>
+            <p className="font-semibold text-white border-l-2 border-brand-500 pl-4 py-1">
               Our work is practical, but our standard is personal. Customers trust us with their
               freight, goods, supplies, equipment, timing, and delivery expectations. We take that
               responsibility seriously.
@@ -46,47 +49,53 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="bg-gray-50 py-16 sm:py-20">
-        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
+      {/* Values Section */}
+      <section className="bg-gradient-to-br from-navy-950 via-navy-900 to-navy-950 py-20 sm:py-28 border-y border-white/5 relative overflow-hidden">
+        <div className="absolute inset-0 bg-grid-pattern opacity-15 pointer-events-none" />
+        <div className="absolute -top-32 -left-32 h-96 w-96 rounded-full bg-brand-500/5 blur-3xl pointer-events-none" />
+        
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center mb-16">
             <h2 className="section-heading">Our Name Is Our Promise</h2>
-          </div>
-          <div className="mt-10 text-gray-600 leading-8">
-            <p className="text-center">
+            <p className="mt-4 text-gray-300 text-base sm:text-lg">
               Reliability is more than a word in our company name. It is the standard we work to
               earn on every load.
             </p>
-            <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {[
-                "Showing up prepared",
-                "Communicating clearly",
-                "Respecting the customer's time",
-                "Reviewing each load carefully",
-                "Using the right equipment for the job",
-                "Handling freight and cargo responsibly",
-                "Driving safely",
-                "Following through from pickup to delivery",
-              ].map((item) => (
-                <div key={item} className="flex items-start gap-3">
-                  <svg className="mt-1 h-5 w-5 flex-shrink-0 text-brand-600" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {[
+              "Showing up prepared",
+              "Communicating clearly",
+              "Respecting the customer's time",
+              "Reviewing each load carefully",
+              "Using the right equipment for the job",
+              "Handling freight and cargo responsibly",
+              "Driving safely",
+              "Following through from pickup to delivery",
+            ].map((item) => (
+              <div key={item} className="glass-card p-5 rounded-2xl border border-white/5 flex items-center gap-4 hover:-translate-y-1 transition-transform">
+                <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-brand-500/10 border border-brand-500/30 text-brand-400 flex-shrink-0">
+                  <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" strokeWidth="2.5" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  <span className="text-gray-700">{item}</span>
-                </div>
-              ))}
-            </div>
+                </span>
+                <span className="text-sm font-semibold text-gray-200">{item}</span>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      <section className="py-16 sm:py-20">
-        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h2 className="section-heading">
+      {/* Operation Section */}
+      <section className="py-20 sm:py-28 bg-navy-950">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="section-heading font-heading">
               Family-Owned, Professionally Operated
             </h2>
           </div>
-          <div className="mt-10 space-y-6 text-gray-600 leading-8">
+          <div className="space-y-6 text-base text-gray-300 leading-relaxed max-w-3xl mx-auto">
             <p>
               A Reliable Trucking Company carries a family-driven mindset into the way we serve.
               The company was built to create stability, opportunity, and a dependable future — and
@@ -101,27 +110,29 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="bg-navy-900 py-16 sm:py-20">
-        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">
+      {/* Evolution Section */}
+      <section className="relative bg-gradient-to-br from-navy-900 via-navy-800 to-navy-950 py-20 sm:py-28 border-t border-white/5 overflow-hidden">
+        <div className="absolute inset-0 bg-grid-pattern opacity-15 pointer-events-none" />
+        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center relative z-10 space-y-8">
+          <h2 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl font-heading leading-tight">
             From One Rig to a Flexible Fleet
           </h2>
-          <p className="mt-6 text-lg leading-8 text-gray-300">
+          <p className="text-base sm:text-lg text-gray-300 leading-relaxed">
             The company started with one rig and grew through experience, determination, and
             opportunity. Over time, the operation evolved into its current fleet: one rig and three
             26-foot box trucks with liftgates.
           </p>
-          <p className="mt-4 text-gray-400">
+          <p className="text-sm text-gray-400 leading-relaxed border-t border-white/5 pt-6">
             That growth gives A Reliable Trucking Company flexibility to support different load
             types, route needs, and transportation requests while staying focused on the same
             foundation the company started with: reliability.
           </p>
-          <div className="mt-8">
+          <div className="pt-4">
             <a
               href="tel:+15186458811"
-              className="inline-flex items-center gap-2 rounded-lg bg-white px-8 py-4 text-base font-semibold text-brand-700 shadow-sm hover:bg-gray-100 transition-colors"
+              className="btn-premium-primary text-base font-bold uppercase tracking-wider px-10 py-5"
             >
-              Call/Text: 518-645-8811
+              Call / Text: 518-645-8811
             </a>
           </div>
         </div>

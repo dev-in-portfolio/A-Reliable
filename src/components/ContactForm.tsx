@@ -23,18 +23,18 @@ export default function ContactForm() {
 
   if (submitted) {
     return (
-      <div className="rounded-lg bg-green-50 border border-green-200 p-8 text-center">
-        <h3 className="text-xl font-semibold text-green-800">
+      <div className="rounded-2xl bg-green-500/10 border border-green-500/20 p-8 text-center space-y-4">
+        <h3 className="text-xl font-bold text-green-400 font-heading">
           Thank You for Contacting Us
         </h3>
-        <p className="mt-4 text-green-700">
+        <p className="text-sm text-gray-300 leading-relaxed max-w-lg mx-auto">
           Your message has been received. For the fastest response, call or text{" "}
-          <a href="tel:+15186458811" className="font-bold underline">
+          <a href="tel:+15186458811" className="font-extrabold text-brand-400 underline underline-offset-2">
             518-645-8811
           </a>{" "}
           to discuss route, timing, load details, and availability.
         </p>
-        <p className="mt-4 text-sm text-green-600">
+        <p className="text-xs text-gray-500 max-w-lg mx-auto border-t border-white/5 pt-4">
           Submitting a request does not guarantee availability or acceptance of a load.
           All transportation requests are reviewed based on route, timing, equipment fit,
           load details, and availability.
@@ -42,6 +42,9 @@ export default function ContactForm() {
       </div>
     )
   }
+
+  const inputClass = "mt-1.5 block w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3.5 text-sm text-white placeholder-gray-500 shadow-sm focus:border-brand-500 focus:ring-2 focus:ring-brand-500/25 focus:outline-none transition-all duration-200"
+  const labelClass = "block text-xs font-bold uppercase tracking-wider text-gray-400 font-heading"
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
@@ -51,7 +54,7 @@ export default function ContactForm() {
 
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
         <div>
-          <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+          <label htmlFor="name" className={labelClass}>
             Name <span className="text-red-500">*</span>
           </label>
           <input
@@ -59,12 +62,12 @@ export default function ContactForm() {
             name="name"
             id="name"
             required
-            className="mt-1 block w-full rounded-md border border-gray-300 px-4 py-3 text-gray-900 shadow-sm focus:border-brand-500 focus:ring-brand-500"
+            className={inputClass}
             placeholder="Your name"
           />
         </div>
         <div>
-          <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
+          <label htmlFor="phone" className={labelClass}>
             Phone Number <span className="text-red-500">*</span>
           </label>
           <input
@@ -72,28 +75,28 @@ export default function ContactForm() {
             name="phone"
             id="phone"
             required
-            className="mt-1 block w-full rounded-md border border-gray-300 px-4 py-3 text-gray-900 shadow-sm focus:border-brand-500 focus:ring-brand-500"
+            className={inputClass}
             placeholder="Your phone number"
           />
         </div>
       </div>
 
       <div>
-        <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+        <label htmlFor="email" className={labelClass}>
           Email Address
         </label>
         <input
           type="email"
           name="email"
           id="email"
-          className="mt-1 block w-full rounded-md border border-gray-300 px-4 py-3 text-gray-900 shadow-sm focus:border-brand-500 focus:ring-brand-500"
+          className={inputClass}
           placeholder="your@email.com"
         />
       </div>
 
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
         <div>
-          <label htmlFor="pickup" className="block text-sm font-medium text-gray-700">
+          <label htmlFor="pickup" className={labelClass}>
             Pickup Location <span className="text-red-500">*</span>
           </label>
           <input
@@ -101,12 +104,12 @@ export default function ContactForm() {
             name="pickup_location"
             id="pickup"
             required
-            className="mt-1 block w-full rounded-md border border-gray-300 px-4 py-3 text-gray-900 shadow-sm focus:border-brand-500 focus:ring-brand-500"
+            className={inputClass}
             placeholder="City, State"
           />
         </div>
         <div>
-          <label htmlFor="delivery" className="block text-sm font-medium text-gray-700">
+          <label htmlFor="delivery" className={labelClass}>
             Delivery Location <span className="text-red-500">*</span>
           </label>
           <input
@@ -114,14 +117,14 @@ export default function ContactForm() {
             name="delivery_location"
             id="delivery"
             required
-            className="mt-1 block w-full rounded-md border border-gray-300 px-4 py-3 text-gray-900 shadow-sm focus:border-brand-500 focus:ring-brand-500"
+            className={inputClass}
             placeholder="City, State"
           />
         </div>
       </div>
 
       <div>
-        <label htmlFor="description" className="block text-sm font-medium text-gray-700">
+        <label htmlFor="description" className={labelClass}>
           What needs to be moved? <span className="text-red-500">*</span>
         </label>
         <textarea
@@ -129,44 +132,44 @@ export default function ContactForm() {
           id="description"
           required
           rows={3}
-          className="mt-1 block w-full rounded-md border border-gray-300 px-4 py-3 text-gray-900 shadow-sm focus:border-brand-500 focus:ring-brand-500"
+          className={inputClass}
           placeholder="Describe the load (type, estimated weight, etc.)"
         />
       </div>
 
       <div>
-        <label htmlFor="pickup-date" className="block text-sm font-medium text-gray-700">
+        <label htmlFor="pickup-date" className={labelClass}>
           When do you need it picked up?
         </label>
         <input
           type="date"
           name="pickup_date"
           id="pickup-date"
-          className="mt-1 block w-full rounded-md border border-gray-300 px-4 py-3 text-gray-900 shadow-sm focus:border-brand-500 focus:ring-brand-500"
+          className={`${inputClass} text-gray-400`}
         />
       </div>
 
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
         <div>
-          <label htmlFor="weight" className="block text-sm font-medium text-gray-700">
+          <label htmlFor="weight" className={labelClass}>
             Estimated Weight
           </label>
           <input
             type="text"
             name="estimated_weight"
             id="weight"
-            className="mt-1 block w-full rounded-md border border-gray-300 px-4 py-3 text-gray-900 shadow-sm focus:border-brand-500 focus:ring-brand-500"
+            className={inputClass}
             placeholder="e.g., 2,000 lbs"
           />
         </div>
         <div>
-          <label htmlFor="liftgate" className="block text-sm font-medium text-gray-700">
+          <label htmlFor="liftgate" className={labelClass}>
             Liftgate Needed?
           </label>
           <select
             name="liftgate_needed"
             id="liftgate"
-            className="mt-1 block w-full rounded-md border border-gray-300 px-4 py-3 text-gray-900 shadow-sm focus:border-brand-500 focus:ring-brand-500"
+            className={inputClass}
           >
             <option value="">Select...</option>
             <option value="yes">Yes</option>
@@ -178,25 +181,25 @@ export default function ContactForm() {
 
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
         <div>
-          <label htmlFor="company" className="block text-sm font-medium text-gray-700">
+          <label htmlFor="company" className={labelClass}>
             Company Name
           </label>
           <input
             type="text"
             name="company_name"
             id="company"
-            className="mt-1 block w-full rounded-md border border-gray-300 px-4 py-3 text-gray-900 shadow-sm focus:border-brand-500 focus:ring-brand-500"
+            className={inputClass}
             placeholder="Your company (optional)"
           />
         </div>
         <div>
-          <label htmlFor="contact-method" className="block text-sm font-medium text-gray-700">
+          <label htmlFor="contact-method" className={labelClass}>
             Preferred Contact Method
           </label>
           <select
             name="preferred_contact_method"
             id="contact-method"
-            className="mt-1 block w-full rounded-md border border-gray-300 px-4 py-3 text-gray-900 shadow-sm focus:border-brand-500 focus:ring-brand-500"
+            className={inputClass}
           >
             <option value="phone">Phone Call</option>
             <option value="text">Text Message</option>
@@ -206,27 +209,29 @@ export default function ContactForm() {
       </div>
 
       <div>
-        <label htmlFor="details" className="block text-sm font-medium text-gray-700">
+        <label htmlFor="details" className={labelClass}>
           Additional Details
         </label>
         <textarea
           name="additional_details"
           id="details"
           rows={3}
-          className="mt-1 block w-full rounded-md border border-gray-300 px-4 py-3 text-gray-900 shadow-sm focus:border-brand-500 focus:ring-brand-500"
+          className={inputClass}
           placeholder="Special handling needs, liftgate required, timing preferences, etc."
         />
       </div>
 
-      <div className="text-xs text-gray-500">
+      <div className="text-[10px] text-gray-500 leading-normal border-t border-white/5 pt-4">
         Submitting this form does not guarantee availability or acceptance of a load.
         All transportation requests are reviewed based on route, timing, equipment fit,
         load details, and availability.
       </div>
 
-      <button type="submit" className="btn-primary w-full sm:w-auto">
-        Send Message
-      </button>
+      <div className="pt-2">
+        <button type="submit" className="btn-premium-primary w-full sm:w-auto uppercase tracking-wider font-bold text-sm py-4">
+          Send Message
+        </button>
+      </div>
     </form>
   )
 }

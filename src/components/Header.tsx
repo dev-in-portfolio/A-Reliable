@@ -19,22 +19,22 @@ export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false)
 
   return (
-    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100 shadow-sm">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-18 items-center justify-between">
-          <Link href="/" className="flex items-center gap-3">
+    <header className="sticky top-0 z-50 w-full px-4 sm:px-6 lg:px-8 py-4 bg-transparent pointer-events-none">
+      <div className="mx-auto max-w-7xl w-full glass-container rounded-2xl px-6 py-3 shadow-2xl pointer-events-auto">
+        <div className="flex h-14 items-center justify-between">
+          <Link href="/" className="flex items-center gap-3 group transition-transform duration-300 active:scale-95">
             <Image
               src="/assets/logo/a-reliable-trucking-logo.png"
               alt="A Reliable Trucking Company logo"
-              width={48}
-              height={48}
-              className="h-10 w-10 object-contain"
+              width={40}
+              height={40}
+              className="h-10 w-10 object-contain drop-shadow-[0_0_10px_rgba(217,119,6,0.3)] transition-transform duration-500 group-hover:rotate-12"
             />
-            <div className="hidden sm:block">
-              <span className="text-lg font-bold text-navy-900">
+            <div className="leading-tight">
+              <span className="text-base font-extrabold text-white tracking-wide block font-heading">
                 A Reliable
               </span>
-              <span className="block text-xs text-gray-500 -mt-0.5">
+              <span className="block text-[10px] uppercase font-bold tracking-widest text-brand-400">
                 Trucking Company
               </span>
             </div>
@@ -45,7 +45,7 @@ export default function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="px-3 py-2 text-sm font-medium text-gray-700 rounded-md hover:text-brand-700 hover:bg-brand-50 transition-colors"
+                className="px-3 py-2 text-xs font-semibold uppercase tracking-wider text-gray-300 hover:text-brand-400 rounded-lg hover:bg-white/5 transition-all duration-200"
               >
                 {link.label}
               </Link>
@@ -55,7 +55,7 @@ export default function Header() {
           <div className="hidden lg:flex items-center">
             <a
               href="tel:+15186458811"
-              className="btn-primary text-sm px-5 py-2.5"
+              className="btn-premium-primary text-xs px-6 py-2.5 uppercase tracking-wider font-bold"
             >
               Call Now
             </a>
@@ -63,7 +63,7 @@ export default function Header() {
 
           <button
             type="button"
-            className="lg:hidden p-2 text-gray-700 hover:text-brand-700"
+            className="lg:hidden p-2 text-gray-300 hover:text-brand-400 hover:bg-white/5 rounded-xl transition-colors"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle navigation menu"
           >
@@ -79,13 +79,13 @@ export default function Header() {
       </div>
 
       {mobileOpen && (
-        <div className="lg:hidden border-t border-gray-100 bg-white">
-          <div className="mx-auto max-w-7xl px-4 py-3 space-y-1">
+        <div className="lg:hidden mt-2 mx-auto max-w-7xl glass-container rounded-2xl p-4 shadow-2xl pointer-events-auto animate-slide-up">
+          <div className="space-y-1">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="block px-3 py-2 text-sm font-medium text-gray-700 rounded-md hover:text-brand-700 hover:bg-brand-50"
+                className="block px-4 py-2.5 text-sm font-semibold uppercase tracking-wider text-gray-300 rounded-xl hover:text-brand-400 hover:bg-white/5 transition-all"
                 onClick={() => setMobileOpen(false)}
               >
                 {link.label}
@@ -93,7 +93,8 @@ export default function Header() {
             ))}
             <a
               href="tel:+15186458811"
-              className="block w-full text-center btn-primary mt-3"
+              className="block w-full text-center btn-premium-primary mt-4 uppercase tracking-wider font-bold"
+              onClick={() => setMobileOpen(false)}
             >
               Call Now: 518-645-8811
             </a>
