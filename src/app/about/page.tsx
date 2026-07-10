@@ -1,146 +1,106 @@
 import type { Metadata } from "next"
+import Image from "next/image"
 import PageHero from "@/components/PageHero"
 import CTASection from "@/components/CTASection"
 
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Learn about A Reliable Trucking Company, a family-owned freight transportation company based in Charlotte, NC and serving customers nationwide.",
+    "Learn about A Reliable Trucking Company, a family-owned freight transportation company based in Charlotte, North Carolina.",
 }
+
+const timeline = [
+  { year: "2022", text: "A Reliable Trucking Company was established as a family-owned transportation business." },
+  { year: "Started", text: "The operation began with one commercial rig and a focus on dependable service." },
+  { year: "Expanded", text: "The fleet grew to include three 26-foot box trucks equipped with liftgates." },
+  { year: "Today", text: "The company reviews local, regional, and long-distance transportation requests from its Charlotte base." },
+]
 
 export default function AboutPage() {
   return (
     <>
       <PageHero
-        title="A Family-Owned Company Built from the Ground Up"
-        description="A Reliable Trucking Company is a family-owned freight transportation company based in Charlotte, North Carolina and serving customers nationwide. Established in 2022, the company was built with a clear purpose: to create something independent, dependable, and meaningful for the family behind it."
-        canvasType="solarstorm"
+        title="A Family-Owned Company Built on Reliability"
+        description="A Reliable Trucking Company was established in 2022 with a straightforward purpose: build an independent transportation business that creates opportunity for the family behind it and provides dependable service to customers."
       />
 
-      {/* Story Section */}
-      <section className="py-20 sm:py-28 relative overflow-hidden bg-navy-950">
-        <div className="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none" />
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center mb-12">
-            <span className="text-xs font-bold uppercase tracking-widest text-brand-400 px-3 py-1 rounded-full bg-brand-500/5 border border-brand-500/10">
-              Our Story
-            </span>
-            <h2 className="mt-4 section-heading">
-              Driven by Family, Built on Reliability
-            </h2>
+      <section className="bg-white py-16 sm:py-20 lg:py-24">
+        <div className="container-shell grid gap-10 lg:grid-cols-2 lg:items-center lg:gap-16">
+          <div>
+            <span className="eyebrow">Our story</span>
+            <h2 className="section-heading mt-3">Built from the ground up</h2>
+            <div className="mt-6 space-y-5 text-base leading-8 text-navy-700">
+              <p>
+                The company was built around family, purpose, independence, and the belief that reliability
+                still matters. Transportation is practical work, but the responsibility behind it is personal.
+              </p>
+              <p>
+                Customers trust a transportation company with freight, equipment, timing, pickup instructions,
+                and delivery expectations. A Reliable Trucking Company approaches each accepted request with
+                direct communication and attention to the details that determine whether the job is a good fit.
+              </p>
+              <p className="border-l-4 border-brand-500 pl-5 font-bold text-navy-950">
+                The goal is not to accept every load. The goal is to accept the right loads and follow through responsibly.
+              </p>
+            </div>
           </div>
-          <div className="space-y-6 text-base sm:text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto">
-            <p>
-              A Reliable Trucking Company was built on more than transportation. It was built on
-              family, purpose, independence, and the belief that reliability still matters.
-            </p>
-            <p>
-              What began with one rig has grown through hard work, persistence, and real-world
-              experience into a flexible transportation operation. Today, the company operates one
-              rig and three 26-foot box trucks equipped with liftgates, allowing us to support a
-              range of freight transportation, pickup, and delivery needs.
-            </p>
-            <p className="font-semibold text-white border-l-2 border-brand-500 pl-4 py-1">
-              Our work is practical, but our standard is personal. Customers trust us with their
-              freight, goods, supplies, equipment, timing, and delivery expectations. We take that
-              responsibility seriously.
-            </p>
+
+          <div>
+            <div className="relative aspect-[4/3] overflow-hidden rounded-lg bg-navy-900 shadow-xl">
+              <Image
+                src="/assets/images/semi-truck.png"
+                alt="Representative commercial semi-truck traveling on a highway"
+                fill
+                className="object-cover"
+              />
+            </div>
+            <span className="representative-label">Representative fleet imagery.</span>
           </div>
         </div>
       </section>
 
-      {/* Values Section */}
-      <section className="bg-gradient-to-br from-navy-950 via-navy-900 to-navy-950 py-20 sm:py-28 border-y border-white/5 relative overflow-hidden">
-        <div className="absolute inset-0 bg-grid-pattern opacity-15 pointer-events-none" />
-        <div className="absolute -top-32 -left-32 h-96 w-96 rounded-full bg-brand-500/5 blur-3xl pointer-events-none" />
-        
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center mb-16">
-            <h2 className="section-heading">Our Name Is Our Promise</h2>
-            <p className="mt-4 text-gray-300 text-base sm:text-lg">
-              Reliability is more than a word in our company name. It is the standard we work to
-              earn on every load.
-            </p>
+      <section className="border-y border-navy-950/10 bg-warm-100 py-16 sm:py-20 lg:py-24">
+        <div className="container-shell">
+          <div className="max-w-3xl">
+            <span className="eyebrow">Company growth</span>
+            <h2 className="section-heading mt-3">From one rig to a flexible fleet</h2>
           </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {[
-              "Showing up prepared",
-              "Communicating clearly",
-              "Respecting the customer's time",
-              "Reviewing each load carefully",
-              "Using the right equipment for the job",
-              "Handling freight and cargo responsibly",
-              "Driving safely",
-              "Following through from pickup to delivery",
-            ].map((item) => (
-              <div key={item} className="glass-card p-5 rounded-2xl border border-white/5 flex items-center gap-4 hover:-translate-y-1 transition-transform">
-                <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-brand-500/10 border border-brand-500/30 text-brand-400 flex-shrink-0">
-                  <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" strokeWidth="2.5" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </span>
-                <span className="text-sm font-semibold text-gray-200">{item}</span>
-              </div>
+          <div className="mt-10 grid gap-px overflow-hidden border border-navy-950/10 bg-navy-950/10 md:grid-cols-4">
+            {timeline.map((item) => (
+              <article key={item.year} className="bg-white p-6 sm:p-7">
+                <p className="font-heading text-xl font-extrabold text-brand-700">{item.year}</p>
+                <p className="mt-3 leading-7 text-navy-600">{item.text}</p>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Operation Section */}
-      <section className="py-20 sm:py-28 bg-navy-950">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="section-heading font-heading">
-              Family-Owned, Professionally Operated
+      <section className="bg-navy-950 py-16 text-white sm:py-20 lg:py-24">
+        <div className="container-shell grid gap-10 lg:grid-cols-2 lg:gap-16">
+          <div>
+            <span className="eyebrow text-brand-300">What the name means</span>
+            <h2 className="mt-3 font-heading text-3xl font-extrabold tracking-[-0.035em] text-white sm:text-4xl">
+              Reliability is the standard behind the name
             </h2>
           </div>
-          <div className="space-y-6 text-base text-gray-300 leading-relaxed max-w-3xl mx-auto">
+          <div className="space-y-5 text-base leading-8 text-navy-200">
             <p>
-              A Reliable Trucking Company carries a family-driven mindset into the way we serve.
-              The company was built to create stability, opportunity, and a dependable future — and
-              that purpose shows in the way we approach our work.
+              Reliability means showing up prepared, communicating clearly, respecting the customer’s time,
+              reviewing the request carefully, using appropriate equipment, and following through from pickup to delivery.
             </p>
             <p>
-              We believe customers deserve transportation support that feels direct, honest, and
-              professional. No unnecessary confusion. No overpromising. Just clear communication,
-              responsible service, and dependable follow-through.
+              The company’s available equipment includes one commercial rig and three 26-foot box trucks equipped
+              with liftgates. Every request is still reviewed for route, weight, dimensions, access, timing, and availability.
             </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Evolution Section */}
-      <section className="relative bg-gradient-to-br from-navy-900 via-navy-800 to-navy-950 py-20 sm:py-28 border-t border-white/5 overflow-hidden">
-        <div className="absolute inset-0 bg-grid-pattern opacity-15 pointer-events-none" />
-        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center relative z-10 space-y-8">
-          <h2 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl font-heading leading-tight">
-            From One Rig to a Flexible Fleet
-          </h2>
-          <p className="text-base sm:text-lg text-gray-300 leading-relaxed">
-            The company started with one rig and grew through experience, determination, and
-            opportunity. Over time, the operation evolved into its current fleet: one rig and three
-            26-foot box trucks with liftgates.
-          </p>
-          <p className="text-sm text-gray-400 leading-relaxed border-t border-white/5 pt-6">
-            That growth gives A Reliable Trucking Company flexibility to support different load
-            types, route needs, and transportation requests while staying focused on the same
-            foundation the company started with: reliability.
-          </p>
-          <div className="pt-4">
-            <a
-              href="tel:+15186458811"
-              className="btn-premium-primary text-base font-bold uppercase tracking-wider px-10 py-5"
-            >
-              Call / Text: 518-645-8811
-            </a>
           </div>
         </div>
       </section>
 
       <CTASection
-        heading="Have Questions About Our Story?"
-        body="We would be glad to tell you more. Call or text to learn how we can support your transportation needs."
+        heading="Ready to discuss a transportation request?"
+        body="Call or text to talk through the load, route, timing, and equipment needs."
+        showEmail
       />
     </>
   )
