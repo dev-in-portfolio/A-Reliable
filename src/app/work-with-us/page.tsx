@@ -3,100 +3,73 @@ import PageHero from "@/components/PageHero"
 import CTASection from "@/components/CTASection"
 
 export const metadata: Metadata = {
-  title: "Work With Us | A Reliable Trucking Company",
+  title: "Work With Us",
   description:
-    "A Reliable Trucking Company is open to connecting with dependable drivers and transportation professionals for future opportunities.",
+    "A Reliable Trucking Company is open to hearing from qualified drivers and transportation professionals regarding future opportunities.",
 }
+
+const values = [
+  "Reliability",
+  "Safe and responsible driving",
+  "Clear communication",
+  "Professional conduct",
+  "Respect for customers and freight",
+  "Showing up prepared",
+]
 
 export default function WorkWithUsPage() {
   return (
     <>
       <PageHero
-        title="Work With a Company Built on Reliability"
-        description="A Reliable Trucking Company is built on professionalism, safe transportation, communication, and follow-through. As the company continues to grow, we are open to connecting with dependable drivers, transportation professionals, and reliable people who understand the importance of doing the job the right way."
-        canvasType="lattice"
+        title="Interested in Working With A Reliable Trucking Company?"
+        description="The company is open to hearing from qualified drivers and transportation professionals regarding possible future opportunities. This page does not represent a promise that a position is currently available."
       />
 
-      {/* Our Standards */}
-      <section className="py-20 sm:py-28 relative overflow-hidden bg-navy-950">
-        <div className="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none" />
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center mb-12">
-            <span className="text-xs font-bold uppercase tracking-widest text-brand-400 px-3 py-1 rounded-full bg-brand-500/5 border border-brand-500/10">
-              Company Culture
-            </span>
-            <h2 className="mt-4 section-heading">What We Value</h2>
-          </div>
-          <div className="space-y-6 text-base sm:text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto text-center border-b border-white/5 pb-10">
-            <p>
-              We value people who take transportation seriously, communicate clearly, respect the
-              customer's time and property, show up prepared, understand safety and responsibility,
-              care about doing the job correctly, and represent the company professionally.
-            </p>
-            <p className="font-bold text-white text-xl">
-              This is not about filling seats. It is about connecting with people who fit the
-              standard behind the name.
+      <section className="bg-white py-16 sm:py-20 lg:py-24">
+        <div className="container-shell grid gap-10 lg:grid-cols-2 lg:gap-16">
+          <div>
+            <span className="eyebrow">Company standards</span>
+            <h2 className="section-heading mt-3">The people behind the work matter</h2>
+            <p className="section-subheading">
+              Transportation work requires judgment, preparation, communication, and respect for the customer’s time and property.
             </p>
           </div>
-
-          <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {[
-              "Take transportation seriously",
-              "Communicate clearly",
-              "Respect the customer's time and property",
-              "Show up prepared",
-              "Understand safety and responsibility",
-              "Care about doing the job correctly",
-              "Represent the company professionally",
-            ].map((item) => (
-              <div key={item} className="glass-card p-4 rounded-xl border border-white/5 flex items-center gap-3">
-                <span className="flex h-6 w-6 items-center justify-center rounded-lg bg-brand-500/10 border border-brand-500/30 text-brand-400 flex-shrink-0">
-                  <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" strokeWidth="3" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </span>
-                <span className="text-sm text-gray-300 font-semibold">{item}</span>
-              </div>
+          <ul className="grid gap-3 sm:grid-cols-2">
+            {values.map((value) => (
+              <li key={value} className="flex gap-3 border-b border-navy-950/10 py-4 font-semibold text-navy-800">
+                <span className="text-brand-600" aria-hidden="true">✓</span>
+                <span>{value}</span>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </section>
 
-      {/* Future Opportunities */}
-      <section className="bg-gradient-to-br from-navy-950 via-navy-900 to-navy-950 py-20 sm:py-28 border-t border-white/5 relative overflow-hidden">
-        <div className="absolute inset-0 bg-grid-pattern opacity-15 pointer-events-none" />
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center relative z-10 space-y-6">
-          <h2 className="section-heading">Future Opportunities</h2>
-          <p className="section-subheading max-w-2xl mx-auto">
-            A Reliable Trucking Company may consider future opportunities with reliable transportation
-            professionals, drivers, or service-minded individuals who align with the company's values.
-          </p>
-          
-          <div className="pt-8 border-t border-white/5 max-w-xl mx-auto space-y-4">
-            <p className="text-sm text-gray-400">
-              For professional inquiries or to connect with us, contact us directly:
+      <section className="border-y border-navy-950/10 bg-warm-100 py-16 sm:py-20 lg:py-24">
+        <div className="container-shell max-w-4xl">
+          <span className="eyebrow">Future opportunities</span>
+          <h2 className="section-heading mt-3">Open to professional introductions</h2>
+          <div className="mt-6 space-y-5 text-base leading-8 text-navy-700">
+            <p>
+              As the company continues to develop, A Reliable Trucking Company may consider working with
+              qualified drivers, transportation professionals, and dependable people who align with the company’s standards.
             </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-              <a
-                href="tel:+15186458811"
-                className="btn-premium-primary text-sm uppercase tracking-wider font-bold w-full sm:w-auto"
-              >
-                Call / Text: 518-645-8811
-              </a>
-              <a
-                href="mailto:areliabletrucking@proton.me"
-                className="btn-premium-secondary text-sm uppercase tracking-wider font-bold w-full sm:w-auto"
-              >
-                Email Us
-              </a>
-            </div>
+            <p>
+              Sending an inquiry does not guarantee an interview, opening, contract, or employment opportunity.
+              It simply provides a way to introduce yourself and share relevant experience.
+            </p>
+          </div>
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <a href="tel:+15186458811" className="btn-primary w-full sm:w-auto">Call or Text 518-645-8811</a>
+            <a href="mailto:areliabletrucking@proton.me" className="btn-secondary w-full sm:w-auto">Email an Introduction</a>
           </div>
         </div>
       </section>
 
       <CTASection
-        heading="Ready to Be Part of Something Reliable?"
-        body="If you share our values and standards, we want to hear from you."
+        heading="Professional inquiries are welcome"
+        body="Share your background, experience, location, and the type of transportation opportunity you are interested in discussing."
+        showEmail
       />
     </>
   )
