@@ -1,27 +1,19 @@
 const trustItems = [
   "Family-Owned",
+  "Established 2022",
   "Based in Charlotte, NC",
-  "Serving Nationwide",
-  "Licensed & Insured",
-  "Box Truck Service",
-  "Liftgate Support",
-  "Freight Transportation",
+  "Local to Long-Distance Requests",
 ]
 
 export default function TrustBar() {
   return (
-    <section className="relative border-y border-white/5 bg-navy-900/60 overflow-hidden backdrop-blur-sm">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6">
-        <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
-          {trustItems.map((item) => (
-            <div key={item} className="flex items-center gap-2 group">
-              <span className="flex h-2 w-2 rounded-full bg-brand-500 shadow-[0_0_8px_rgba(217,119,6,0.8)] group-hover:scale-125 transition-transform duration-300" />
-              <span className="text-xs font-bold uppercase tracking-wider text-gray-300 group-hover:text-white transition-colors duration-300">
-                {item}
-              </span>
-            </div>
-          ))}
-        </div>
+    <section className="border-y border-navy-950/10 bg-white">
+      <div className="container-shell grid grid-cols-2 divide-x divide-y divide-navy-950/10 sm:grid-cols-4 sm:divide-y-0">
+        {trustItems.map((item) => (
+          <div key={item} className="flex min-h-24 items-center justify-center px-4 py-5 text-center">
+            <span className="text-sm font-extrabold text-navy-900">{item}</span>
+          </div>
+        ))}
       </div>
     </section>
   )

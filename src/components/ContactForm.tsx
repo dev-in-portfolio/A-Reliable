@@ -1,177 +1,127 @@
 "use client"
 
-import { useState, FormEvent } from "react"
+import { FormEvent, useMemo, useState } from "react"
+
+type FormStatus = "idle" | "submitting" | "success" | "error"
 
 export default function ContactForm() {
-  const [submitted, setSubmitted] = useState(false)
+  const [status, setStatus] = useState<FormStatus>("idle")
+  const minPickupDate = useMemo(() => new Date().toISOString().split("T")[0], [])
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    const form = e.currentTarget
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    setStatus("submitting")
+
+    const form = event.currentTarget
     const data = new FormData(form)
 
-    const response = await fetch("https://formsubmit.co/ajax/areliabletrucking@proton.me", {
-      method: "POST",
-      body: data,
-    })
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/areliabletrucking@proton.me", {
+        method: "POST",
+        body: data,
+        headers: { Accept: "application/json" },
+      })
 
-    if (response.ok) {
-      setSubmitted(true)
+      if (!response.ok) throw new Error("Form submission failed")
+
       form.reset()
+      setStatus("success")
+    } catch {
+      setStatus("error")
     }
   }
 
-  if (submitted) {
+  const inputClass =
+    "mt-2 block w-full rounded border border-navy-950/20 bg-white px-4 py-3 text-base text-navy-950 shadow-sm outline-none transition focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20"
+  const labelClass = "block text-sm font-extrabold text-navy-900"
+
+  if (status === "success") {
     return (
-      <div className="rounded-2xl bg-green-500/10 border border-green-500/20 p-8 text-center space-y-4">
-        <h3 className="text-xl font-bold text-green-400 font-heading">
-          Thank You for Contacting Us
-        </h3>
-        <p className="text-sm text-gray-300 leading-relaxed max-w-lg mx-auto">
-          Your message has been received. For the fastest response, call or text{" "}
-          <a href="tel:+15186458811" className="font-extrabold text-brand-400 underline underline-offset-2">
+      <div className="border-l-4 border-brand-500 bg-brand-50 p-6" role="status">
+        <h3 className="font-heading text-2xl font-extrabold text-navy-950">Your request was sent</h3>
+        <p className="mt-3 leading-7 text-navy-700">
+          Thank you. For the fastest response, call or text{" "}
+          <a href="tel:+15186458811" className="font-extrabold text-brand-700 underline">
             518-645-8811
-          </a>{" "}
-          to discuss route, timing, load details, and availability.
+          </a>.
         </p>
-        <p className="text-xs text-gray-500 max-w-lg mx-auto border-t border-white/5 pt-4">
-          Submitting a request does not guarantee availability or acceptance of a load.
-          All transportation requests are reviewed based on route, timing, equipment fit,
-          load details, and availability.
+        <p className="mt-3 text-sm leading-6 text-navy-600">
+          Submission does not guarantee availability, pricing, equipment assignment, route availability, or acceptance of a load.
         </p>
+        <button type="button" className="btn-secondary mt-5" onClick={() => setStatus("idle")}>
+          Send Another Request
+        </button>
       </div>
     )
   }
 
-  const inputClass = "mt-1.5 block w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3.5 text-sm text-white placeholder-gray-500 shadow-sm focus:border-brand-500 focus:ring-2 focus:ring-brand-500/25 focus:outline-none transition-all duration-200"
-  const labelClass = "block text-xs font-bold uppercase tracking-wider text-gray-400 font-heading"
-
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
-      <input type="hidden" name="_subject" value="New Contact Form Submission - A Reliable Trucking" />
+    <form onSubmit={handleSubmit} className="space-y-6" aria-describedby="form-disclaimer">
+      <input type="hidden" name="_subject" value="New Transportation Request - A Reliable Trucking" />
       <input type="hidden" name="_template" value="table" />
-      <input type="hidden" name="_captcha" value="false" />
+      <input type="text" name="_honey" className="hidden" tabIndex={-1} autoComplete="off" aria-hidden="true" />
 
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+      <div className="grid gap-6 sm:grid-cols-2">
         <div>
-          <label htmlFor="name" className={labelClass}>
-            Name <span className="text-red-500">*</span>
-          </label>
-          <input
-            type="text"
-            name="name"
-            id="name"
-            required
-            className={inputClass}
-            placeholder="Your name"
-          />
+          <label htmlFor="name" className={labelClass}>Name <span className="text-brand-700">*</span></label>
+          <input type="text" name="name" id="name" required autoComplete="name" className={inputClass} />
         </div>
         <div>
-          <label htmlFor="phone" className={labelClass}>
-            Phone Number <span className="text-red-500">*</span>
-          </label>
-          <input
-            type="tel"
-            name="phone"
-            id="phone"
-            required
-            className={inputClass}
-            placeholder="Your phone number"
-          />
+          <label htmlFor="phone" className={labelClass}>Phone number <span className="text-brand-700">*</span></label>
+          <input type="tel" name="phone" id="phone" required autoComplete="tel" className={inputClass} />
         </div>
       </div>
 
-      <div>
-        <label htmlFor="email" className={labelClass}>
-          Email Address
-        </label>
-        <input
-          type="email"
-          name="email"
-          id="email"
-          className={inputClass}
-          placeholder="your@email.com"
-        />
-      </div>
-
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+      <div className="grid gap-6 sm:grid-cols-2">
         <div>
-          <label htmlFor="pickup" className={labelClass}>
-            Pickup Location <span className="text-red-500">*</span>
-          </label>
-          <input
-            type="text"
-            name="pickup_location"
-            id="pickup"
-            required
-            className={inputClass}
-            placeholder="City, State"
-          />
+          <label htmlFor="email" className={labelClass}>Email address</label>
+          <input type="email" name="email" id="email" autoComplete="email" className={inputClass} />
         </div>
         <div>
-          <label htmlFor="delivery" className={labelClass}>
-            Delivery Location <span className="text-red-500">*</span>
-          </label>
-          <input
-            type="text"
-            name="delivery_location"
-            id="delivery"
-            required
-            className={inputClass}
-            placeholder="City, State"
-          />
+          <label htmlFor="company" className={labelClass}>Company name</label>
+          <input type="text" name="company_name" id="company" autoComplete="organization" className={inputClass} />
+        </div>
+      </div>
+
+      <div className="grid gap-6 sm:grid-cols-2">
+        <div>
+          <label htmlFor="pickup" className={labelClass}>Pickup location <span className="text-brand-700">*</span></label>
+          <input type="text" name="pickup_location" id="pickup" required placeholder="City, State" className={inputClass} />
+        </div>
+        <div>
+          <label htmlFor="delivery" className={labelClass}>Delivery location <span className="text-brand-700">*</span></label>
+          <input type="text" name="delivery_location" id="delivery" required placeholder="City, State" className={inputClass} />
         </div>
       </div>
 
       <div>
-        <label htmlFor="description" className={labelClass}>
-          What needs to be moved? <span className="text-red-500">*</span>
-        </label>
-        <textarea
-          name="description"
-          id="description"
-          required
-          rows={3}
-          className={inputClass}
-          placeholder="Describe the load (type, estimated weight, etc.)"
-        />
+        <label htmlFor="description" className={labelClass}>What needs to be moved? <span className="text-brand-700">*</span></label>
+        <textarea name="description" id="description" required rows={4} className={inputClass} placeholder="Describe the freight, cargo, goods, supplies, or equipment." />
       </div>
 
-      <div>
-        <label htmlFor="pickup-date" className={labelClass}>
-          When do you need it picked up?
-        </label>
-        <input
-          type="date"
-          name="pickup_date"
-          id="pickup-date"
-          className={`${inputClass} text-gray-400`}
-        />
-      </div>
-
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         <div>
-          <label htmlFor="weight" className={labelClass}>
-            Estimated Weight
-          </label>
-          <input
-            type="text"
-            name="estimated_weight"
-            id="weight"
-            className={inputClass}
-            placeholder="e.g., 2,000 lbs"
-          />
+          <label htmlFor="weight" className={labelClass}>Estimated weight</label>
+          <input type="text" name="estimated_weight" id="weight" className={inputClass} placeholder="Example: 2,000 lbs" />
         </div>
         <div>
-          <label htmlFor="liftgate" className={labelClass}>
-            Liftgate Needed?
-          </label>
-          <select
-            name="liftgate_needed"
-            id="liftgate"
-            className={inputClass}
-          >
-            <option value="">Select...</option>
+          <label htmlFor="dimensions" className={labelClass}>Dimensions</label>
+          <input type="text" name="dimensions" id="dimensions" className={inputClass} placeholder="Length × width × height" />
+        </div>
+        <div>
+          <label htmlFor="pickup-date" className={labelClass}>Preferred pickup date</label>
+          <input type="date" name="pickup_date" id="pickup-date" min={minPickupDate} className={inputClass} />
+        </div>
+      </div>
+
+      <div className="grid gap-6 sm:grid-cols-2">
+        <div>
+          <label htmlFor="delivery-date" className={labelClass}>Preferred delivery date</label>
+          <input type="date" name="delivery_date" id="delivery-date" min={minPickupDate} className={inputClass} />
+        </div>
+        <div>
+          <label htmlFor="liftgate" className={labelClass}>Liftgate needed?</label>
+          <select name="liftgate_needed" id="liftgate" className={inputClass} defaultValue="unsure">
             <option value="yes">Yes</option>
             <option value="no">No</option>
             <option value="unsure">Unsure</option>
@@ -179,59 +129,40 @@ export default function ContactForm() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-        <div>
-          <label htmlFor="company" className={labelClass}>
-            Company Name
-          </label>
-          <input
-            type="text"
-            name="company_name"
-            id="company"
-            className={inputClass}
-            placeholder="Your company (optional)"
-          />
-        </div>
-        <div>
-          <label htmlFor="contact-method" className={labelClass}>
-            Preferred Contact Method
-          </label>
-          <select
-            name="preferred_contact_method"
-            id="contact-method"
-            className={inputClass}
-          >
-            <option value="phone">Phone Call</option>
-            <option value="text">Text Message</option>
-            <option value="email">Email</option>
-          </select>
-        </div>
-      </div>
-
       <div>
-        <label htmlFor="details" className={labelClass}>
-          Additional Details
-        </label>
+        <label htmlFor="details" className={labelClass}>Additional details</label>
         <textarea
           name="additional_details"
           id="details"
-          rows={3}
+          rows={4}
           className={inputClass}
-          placeholder="Special handling needs, liftgate required, timing preferences, etc."
+          placeholder="Loading access, dock information, special handling needs, timing, or other useful details."
         />
       </div>
 
-      <div className="text-[10px] text-gray-500 leading-normal border-t border-white/5 pt-4">
-        Submitting this form does not guarantee availability or acceptance of a load.
-        All transportation requests are reviewed based on route, timing, equipment fit,
-        load details, and availability.
+      <div>
+        <label htmlFor="contact-method" className={labelClass}>Preferred contact method</label>
+        <select name="preferred_contact_method" id="contact-method" className={inputClass} defaultValue="phone">
+          <option value="phone">Phone call</option>
+          <option value="text">Text message</option>
+          <option value="email">Email</option>
+        </select>
       </div>
 
-      <div className="pt-2">
-        <button type="submit" className="btn-premium-primary w-full sm:w-auto uppercase tracking-wider font-bold text-sm py-4">
-          Send Message
-        </button>
-      </div>
+      <p id="form-disclaimer" className="border-t border-navy-950/10 pt-5 text-sm leading-6 text-navy-600">
+        The information submitted will be used to respond to this transportation inquiry. Submission does not
+        guarantee availability, pricing, equipment assignment, route availability, or acceptance of a load.
+      </p>
+
+      {status === "error" && (
+        <div className="border-l-4 border-red-600 bg-red-50 p-4 text-sm leading-6 text-red-900" role="alert">
+          The request could not be sent. Please try again or call or text 518-645-8811.
+        </div>
+      )}
+
+      <button type="submit" className="btn-primary w-full sm:w-auto" disabled={status === "submitting"}>
+        {status === "submitting" ? "Sending Request…" : "Send Transportation Request"}
+      </button>
     </form>
   )
 }
