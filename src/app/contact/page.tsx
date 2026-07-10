@@ -4,109 +4,102 @@ import ContactForm from "@/components/ContactForm"
 import LoadAdvisor from "@/components/LoadAdvisor"
 
 export const metadata: Metadata = {
-  title: "Contact A Reliable Trucking Company | Call or Text 518-645-8811",
+  title: "Contact",
   description:
-    "Contact A Reliable Trucking Company for freight transportation, load pickup, box truck service, and nationwide delivery support.",
+    "Call, text, email, or send a transportation request to A Reliable Trucking Company in Charlotte, North Carolina.",
 }
+
+const readyItems = [
+  "Pickup location",
+  "Delivery location",
+  "Load description",
+  "Estimated weight",
+  "Dimensions, when available",
+  "Preferred pickup and delivery timing",
+  "Liftgate or loading access needs",
+]
 
 export default function ContactPage() {
   return (
     <>
       <PageHero
-        title="Contact A Reliable Trucking Company"
-        description="Need freight, goods, supplies, equipment, or general cargo picked up and delivered? Contact A Reliable Trucking Company to discuss your transportation needs, route, timing, and load details."
-        canvasType="solarstorm"
+        title="Let’s Discuss Your Transportation Request"
+        description="Call or text for the fastest response. Be ready to share the pickup location, delivery location, load details, timing, and any available weight or dimension information."
       >
-        <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-6">
-          <a
-            href="tel:+15186458811"
-            className="btn-premium-primary text-base font-bold uppercase tracking-wider px-8 py-4.5"
-          >
-            <svg className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
-            </svg>
-            Call / Text: 518-645-8811
+        <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+          <a href="tel:+15186458811" className="btn-primary w-full sm:w-auto">
+            Call or Text 518-645-8811
           </a>
           <a
             href="mailto:areliabletrucking@proton.me"
-            className="text-sm font-semibold text-gray-300 hover:text-white underline underline-offset-4 transition-colors"
+            className="inline-flex w-full items-center justify-center rounded border border-white/30 px-5 py-3.5 font-extrabold text-white hover:border-white hover:bg-white/10 sm:w-auto"
           >
-            areliabletrucking@proton.me
+            Email Us
           </a>
         </div>
       </PageHero>
 
-      <section className="py-20 sm:py-28 relative overflow-hidden bg-navy-950">
-        <div className="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none" />
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-            
-            {/* Left Info Columns */}
-            <div className="lg:col-span-4 space-y-8">
-              <div className="space-y-6">
-                <h2 className="text-2xl font-extrabold text-white font-heading tracking-wide">Get in Touch</h2>
-                <div className="space-y-4">
-                  {[
-                    { label: "Phone / Text", val: "518-645-8811", href: "tel:+15186458811" },
-                    { label: "Email", val: "areliabletrucking@proton.me", href: "mailto:areliabletrucking@proton.me" },
-                  ].map((info) => (
-                    <div key={info.label} className="bg-white/5 border border-white/5 p-4 rounded-xl">
-                      <h3 className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">{info.label}</h3>
-                      <a href={info.href} className="mt-1 block text-base font-bold text-brand-400 hover:text-brand-300 transition-colors break-all">
-                        {info.val}
-                      </a>
-                    </div>
-                  ))}
-                  <div className="bg-white/5 border border-white/5 p-4 rounded-xl">
-                    <h3 className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Location & Area</h3>
-                    <p className="mt-1 text-sm text-gray-300 font-semibold">Based in Charlotte, NC &mdash; Serving Nationwide</p>
-                  </div>
-                </div>
-              </div>
+      <section className="bg-white py-16 sm:py-20 lg:py-24">
+        <div className="container-shell grid gap-12 lg:grid-cols-[0.72fr_1.28fr] lg:gap-16">
+          <aside>
+            <span className="eyebrow">Contact information</span>
+            <h2 className="mt-3 font-heading text-3xl font-extrabold tracking-[-0.03em] text-navy-950">
+              Call or text first
+            </h2>
+            <p className="mt-4 leading-7 text-navy-600">
+              Direct phone or text communication is the fastest way to discuss availability, route, timing, and load details.
+            </p>
 
-              {/* What to Have Ready */}
-              <div className="glass-card p-6 rounded-2xl border border-white/10">
-                <h3 className="text-base font-bold text-white font-heading tracking-wide mb-4">
-                  What to Have Ready
-                </h3>
-                <p className="text-xs text-gray-400 mb-4">
-                  When calling or texting, please be ready to provide:
-                </p>
-                <div className="space-y-3">
-                  {[
-                    "Pickup location",
-                    "Delivery location",
-                    "Load description",
-                    "Estimated weight",
-                    "Preferred pickup date",
-                    "Preferred delivery date",
-                    "Any special handling needs",
-                    "Whether a liftgate is needed",
-                  ].map((item) => (
-                    <div key={item} className="flex items-center gap-2">
-                      <span className="flex h-4.5 w-4.5 items-center justify-center rounded bg-brand-500/10 border border-brand-500/30 text-brand-400 flex-shrink-0">
-                        <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" strokeWidth="3" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                        </svg>
-                      </span>
-                      <span className="text-xs sm:text-sm text-gray-300 font-semibold">{item}</span>
-                    </div>
-                  ))}
-                </div>
+            <div className="mt-7 space-y-5 border-y border-navy-950/10 py-6">
+              <div>
+                <p className="text-xs font-extrabold uppercase tracking-[0.12em] text-brand-700">Phone and text</p>
+                <a href="tel:+15186458811" className="mt-2 inline-block text-xl font-extrabold text-navy-950 hover:text-brand-700">
+                  518-645-8811
+                </a>
+              </div>
+              <div>
+                <p className="text-xs font-extrabold uppercase tracking-[0.12em] text-brand-700">Email</p>
+                <a href="mailto:areliabletrucking@proton.me" className="mt-2 inline-block break-all font-bold text-navy-950 hover:text-brand-700">
+                  areliabletrucking@proton.me
+                </a>
+              </div>
+              <div>
+                <p className="text-xs font-extrabold uppercase tracking-[0.12em] text-brand-700">Location</p>
+                <p className="mt-2 font-bold text-navy-950">Charlotte, North Carolina</p>
               </div>
             </div>
 
-            {/* Right Contact Form */}
-            <div className="lg:col-span-8 space-y-8">
-              <LoadAdvisor />
-              <div className="glass-card p-8 sm:p-10 rounded-3xl border border-white/10">
-                <h2 className="text-2xl font-extrabold text-white font-heading tracking-wide mb-8">
-                  Send Us a Message
-                </h2>
-                <ContactForm />
-              </div>
+            <div className="mt-8">
+              <h3 className="font-heading text-xl font-extrabold text-navy-950">What to have ready</h3>
+              <ul className="mt-4 space-y-3">
+                {readyItems.map((item) => (
+                  <li key={item} className="flex gap-3 text-sm font-semibold leading-6 text-navy-700">
+                    <span className="text-brand-600" aria-hidden="true">✓</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </aside>
+
+          <div id="transportation-request-form" className="scroll-mt-28">
+            <span className="eyebrow">Transportation request</span>
+            <h2 className="mt-3 font-heading text-3xl font-extrabold tracking-[-0.03em] text-navy-950 sm:text-4xl">
+              Send the load details
+            </h2>
+            <p className="mt-4 max-w-2xl leading-7 text-navy-600">
+              Complete the required fields and include any additional information that may help the company review the request.
+            </p>
+            <div className="mt-8 border border-navy-950/10 bg-warm-50 p-6 sm:p-8">
+              <ContactForm />
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="border-t border-navy-950/10 bg-warm-100 py-16 sm:py-20 lg:py-24">
+        <div className="container-shell">
+          <LoadAdvisor />
         </div>
       </section>
     </>
